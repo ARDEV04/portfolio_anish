@@ -1,0 +1,290 @@
+@import "tailwindcss";
+
+/* ===================== THEME: "PLUM AMBER NOIR" ===================== */
+/* Professional deep-plum base with warm amber accents and soft violet. */
+
+:root {
+  --nav-h: 72px;
+
+  /* Backgrounds */
+  --app-bg: 
+    radial-gradient(1200px 800px at 10% -10%, rgba(167, 139, 250, 0.25) 0%, rgba(167, 139, 250, 0) 60%),
+    radial-gradient(1000px 700px at 110% 10%, rgba(245, 158, 11, 0.18) 0%, rgba(245, 158, 11, 0) 55%),
+    linear-gradient(180deg, #0a0911 0%, #1a1126 55%, #1a1329 100%);
+  --panel-bg:
+    linear-gradient(135deg, rgba(34, 22, 53, 0.85), rgba(26, 17, 41, 0.85));
+
+  /* Glass / borders */
+  --glass-bg: linear-gradient(180deg, rgba(32, 22, 51, 0.70), rgba(32, 22, 51, 0.45));
+  --border: rgba(255, 255, 255, 0.08);
+
+  /* Accents */
+  --accent-amber: #f59e0b; /* amber-500 */
+  --accent-violet: #a78bfa; /* violet-400 */
+  --accent-rose: #fb7185;   /* rose-400 */
+
+  /* Text */
+  --text-0: #ffffff;
+  --text-1: rgba(255, 255, 255, 0.92);
+  --text-2: rgba(255, 255, 255, 0.68);
+}
+
+/* ===================== GLOBAL / RESET ===================== */
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  color: var(--text-1);
+  background: var(--app-bg);
+  color-scheme: dark;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  max-width: none;
+  text-align: initial;
+}
+
+/* Override the existing Tailwind gradient containers to adopt the new theme */
+#root > div:first-child { background: var(--app-bg) !important; }
+#root main { background: var(--panel-bg) !important; }
+
+/* Typography & links */
+a {
+  color: var(--accent-violet);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+a:hover { color: var(--accent-amber); }
+
+/* Utility preserved from your layout: adds space for sticky navbar */
+.pt-navbar { padding-top: var(--nav-h); }
+
+/* Legacy demo styles (optional) */
+.logo {
+  height: 7em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover { filter: drop-shadow(0 0 2em rgba(167, 139, 250, 0.5)); }
+.logo.react:hover { filter: drop-shadow(0 0 2em rgba(245, 158, 11, 0.5)); }
+
+@keyframes logo-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo { animation: logo-spin infinite 20s linear; }
+}
+
+.card { padding: 2em; }
+.read-the-docs { color: var(--text-2); }
+
+/* ===================== NAVBAR ===================== */
+/* Expected DOM:
+<nav class="navbar" data-expanded="false">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#hero">Vaibhav&nbsp;Jaiswal</a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a class="nav-link" href="#about">About</a></li>
+      ...
+      <li><a class="nav-cta" href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+*/
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 50;
+  height: var(--nav-h);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: var(--glass-bg);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  height: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+/* Brand — refined, animated gradient text */
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  line-height: 1;
+  background: linear-gradient(
+    90deg,
+    var(--accent-amber),
+    var(--accent-rose),
+    var(--accent-violet)
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: brandShift 14s ease-in-out infinite;
+  transition: transform 180ms ease, filter 180ms ease;
+}
+.nav-brand::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 50% 50%, var(--accent-amber), rgba(0,0,0,0) 65%);
+  box-shadow: 0 0 10px var(--accent-amber);
+  animation: brandPulse 3.2s ease-in-out infinite;
+}
+.nav-brand:hover,
+.nav-brand:focus-visible {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 6px 16px rgba(245, 158, 11, 0.18));
+  outline: none;
+}
+
+@keyframes brandShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+@keyframes brandPulse {
+  0%, 100% { opacity: 0.95; transform: scale(1); }
+  50%      { opacity: 0.65; transform: scale(0.92); }
+}
+
+/* Menu (desktop) */
+.nav-menu {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  list-style: none;
+}
+
+/* Links */
+.nav-link {
+  color: var(--text-1);
+  font-weight: 600;
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.6rem;
+  transition: color 140ms ease, background-color 140ms ease, transform 140ms ease;
+}
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--text-0);
+  background-color: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+/* CTA */
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.35rem;
+  padding: 0 1rem;
+  border-radius: 9999px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+  color: #1a1223;
+  background: linear-gradient(180deg, #fff, #fde68a);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.18);
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+.nav-cta:hover,
+.nav-cta:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(245, 158, 11, 0.28);
+  outline: none;
+}
+
+/* Toggle (hamburger) */
+.nav-toggle {
+  display: none;
+  margin-left: auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.nav-toggle:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.3);
+  outline-offset: 2px;
+}
+.nav-toggle-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text-0);
+  border-radius: 2px;
+}
+.nav-toggle-bar + .nav-toggle-bar { margin-top: 4px; }
+
+/* Small screens */
+@media (max-width: 768px) {
+  .nav-toggle { display: inline-flex; }
+
+  .nav-menu {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    padding: 0.9rem;
+    background: linear-gradient(180deg, rgba(26, 17, 41, 0.98), rgba(26, 17, 41, 0.94));
+    border-bottom: 1px solid var(--border);
+    max-height: calc(100dvh - var(--nav-h));
+    overflow-y: auto;
+  }
+  .navbar[data-expanded="true"] .nav-menu { display: flex; }
+
+  .nav-link {
+    text-align: left;
+    padding: 0.9rem 1rem;
+    border-radius: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .nav-cta {
+    height: 2.6rem;
+    padding: 0 1rem;
+    margin-top: 0.25rem;
+  }
+}
+
+/* Motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .nav-brand { animation: none; }
+  .nav-brand::after { animation: none; }
+  .nav-cta,
+  .nav-link { transition: none; }
+}
