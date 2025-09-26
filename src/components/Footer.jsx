@@ -1,5 +1,5 @@
 import React from "react";
-import profileImg from "../assets/original_resize.jpg";
+import profileImg from "../assets/original_resize.JPG";
 
 export default function Footer() {
   return (
