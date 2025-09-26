@@ -1,5 +1,5 @@
 import React from "react";
-import profileImg from "../assets/profile.jpg";
+import profileImg from "../assets/original_resize.jpg";
 
 export default function Footer() {
   return (
@@ -26,7 +26,7 @@ export default function Footer() {
           </div>
 
           <div className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-rose-400 to-violet-400">
-            Bikram Kumar Singh
+            Anish Ranjan
           </div>
 
           <div className="text-[var(--text-2)] text-center max-w-xl">
@@ -36,7 +36,7 @@ export default function Footer() {
         </div>
 
         <div className="text-[var(--text-1)]/70 text-sm mt-2">
-          &copy; {new Date().getFullYear()} Bikram Kumar Singh. All rights
+          &copy; {new Date().getFullYear()} Anish Ranjan. All rights
           reserved.
         </div>
         <div className="text-[var(--text-2)] text-xs mt-1">

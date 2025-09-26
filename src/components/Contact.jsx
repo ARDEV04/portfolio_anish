@@ -138,7 +138,7 @@ export default function Contact() {
             </p>
             <div className="flex gap-4 mb-4">
               <a
-                href="https://github.com/BikramSingh2004"
+                href="https://github.com/ARDEV04"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-2xl text-[var(--text-1)] hover:text-[var(--text-0)] bg-white/5 p-3 rounded-full border border-white/15 transition-colors backdrop-blur hover:bg-white/10"
@@ -146,7 +146,7 @@ export default function Contact() {
                 <FaGithub />
               </a>
               <a
-                href="https://www.linkedin.com/in/bikram-kumar-singh-62199a24b/"
+                href="https://www.linkedin.com/in/anish-ranjan-04bb7324b/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-2xl text-[var(--text-1)] hover:text-[var(--text-0)] bg-white/5 p-3 rounded-full border border-white/15 transition-colors backdrop-blur hover:bg-white/10"
@@ -154,7 +154,7 @@ export default function Contact() {
                 <FaLinkedin />
               </a>
               <a
-                href="mailto:bikramkumarsingh817@gmail.com"
+                href="mailto:techiranjan004@gmail.com"
                 className="text-2xl text-[var(--text-1)] hover:text-[var(--text-0)] bg-white/5 p-3 rounded-full border border-white/15 transition-colors backdrop-blur hover:bg-white/10"
               >
                 <FaEnvelope />
